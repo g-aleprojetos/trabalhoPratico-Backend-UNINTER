@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using TrabalhoPratico_Backend;
 
 namespace Entities
 {
-    public class Book
+    public class Book : BaseEntity
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public List<Author> Author { get; set; }
+        public List<Author> Id_Author { get; set; }
         public string Publisher { get; set; }
         public string Language { get; set; }
         public int Pages { get; set; }

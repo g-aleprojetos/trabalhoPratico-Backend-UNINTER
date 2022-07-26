@@ -1,16 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Context;
+using Services;
+using Services.Interfaces;
 
 namespace TrabalhoPratico_Backend
 {
@@ -28,9 +25,25 @@ namespace TrabalhoPratico_Backend
         {
 
             services.AddControllers();
+            services.AddDbContext<ApiContext>(options =>
+                                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IRepository, Service>();
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TrabalhoPratico_Backend", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Trabalho Prático",
+                    Description = "ARQUITETURA E DESENVOLVIMENTO DE API’S PARA BACK-END",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Alexandre Gonçalves",
+                        Email = "3413992@alunouninter.com",
+                    },
+                });
+                c.EnableAnnotations();
             });
         }
 
