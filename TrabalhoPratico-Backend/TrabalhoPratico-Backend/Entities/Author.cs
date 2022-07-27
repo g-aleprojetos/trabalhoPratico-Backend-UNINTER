@@ -6,7 +6,14 @@ namespace Entities
 {
     public class Author : BaseEntity
     {
-        public List<Book> Id_Book { get; set; }
+        private List<Book> _book = new();
+        public IEnumerable<Book> Books => _book;
 
+        public Author() { }
+
+        public Author(string name)
+        {
+            Name = name;
+        }
     }
 }
