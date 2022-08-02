@@ -12,7 +12,7 @@ namespace Entities
         public int Publication { get; set; }
         public string Description { get; set; }
         public ICollection<User> Users { get; set; }
-        public ICollection<Author> Authors { get; set; }
+        public IEnumerable<Author> Authors { get; set; }
 
         public Book() { }
 

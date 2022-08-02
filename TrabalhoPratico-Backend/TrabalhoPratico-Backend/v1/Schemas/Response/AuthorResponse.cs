@@ -24,7 +24,7 @@ namespace Schemas.Response
     {
         public AuthorsResponse(IEnumerable<Author> author)
         {
-            if (author != null) return;
+            if (author == null) return;
             Authors = author
                 .Select(AuthorResponse.Response)
                 .OrderBy(element => element.Name);
