@@ -1,10 +1,10 @@
 ﻿using Context;
 using Microsoft.EntityFrameworkCore;
-using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TrabalhoPratico_Backend;
+using TrabalhoPratico_Backend.Services.Interfaces;
 
 namespace Services
 {
@@ -17,9 +17,19 @@ namespace Services
             _context = context;
         }
 
+        public void Add<T>(T entity) where T : BaseEntity
+        {
+            _context.Add(entity);
+        }
+
         public Task<T> GetByIdAsync<T>(Guid id) where T : BaseEntity
         {
             return _context.Set<T>().SingleOrDefaultAsync(e => e.Id == id);
+        }
+
+        public Task<T> GetByNameAsync<T>(string name) where T : BaseEntity
+        {
+            return _context.Set<T>().SingleOrDefaultAsync(e => e.Name == name);
         }
 
         public Task<List<T>> ListAsync<T>() where T : BaseEntity
@@ -51,11 +61,6 @@ namespace Services
         {
             entity.Deletada = true;
             await UpdateAsync(entity);
-        }
-
-        Task<List<T>> IRepository.ListAsync<T>()
-        {
-            throw new NotImplementedException();
         }
     }
 }

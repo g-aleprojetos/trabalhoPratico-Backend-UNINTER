@@ -35,7 +35,7 @@ namespace Context
                      new Author() { Id = Guid.NewGuid(), Name = "Luis Joyanes Aguilar" },
                      new Author() { Id = Guid.NewGuid(), Name = "Simon Monk"},
                      new Author() { Id = Guid.NewGuid(), Name = "Cláudio Luís Vieira Oliveira" },
-                     new Author() { Id = Guid.NewGuid(), Name = "Humberto Augusto Piovesana Zanetti" });
+                     new Author() { Id = Guid.NewGuid(), Name = "Humberto Augusto Piovesana Zanetti" });            
         }
     }
 }

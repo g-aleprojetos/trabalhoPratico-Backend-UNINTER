@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Context;
 using Services;
-using Services.Interfaces;
+using TrabalhoPratico_Backend.Services.Interfaces;
 
 namespace TrabalhoPratico_Backend
 {
