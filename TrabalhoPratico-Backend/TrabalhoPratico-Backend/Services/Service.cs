@@ -1,7 +1,10 @@
-﻿using Context;
+﻿using Ardalis.Specification;
+using Ardalis.Specification.EntityFrameworkCore;
+using Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TrabalhoPratico_Backend;
 using TrabalhoPratico_Backend.Services.Interfaces;
@@ -15,6 +18,11 @@ namespace Services
         public Service(ApiContext context)
         {
             _context = context;
+        }
+
+        private IQueryable<T> ApplySpecification<T>(ISpecification<T> spec) where T : BaseEntity
+        {
+            return SpecificationEvaluator.Default.GetQuery(_context.Set<T>().AsQueryable(), specification: spec);
         }
 
         public void Add<T>(T entity) where T : BaseEntity
@@ -35,6 +43,11 @@ namespace Services
         public Task<List<T>> ListAsync<T>() where T : BaseEntity
         {
             return _context.Set<T>().ToListAsync();
+        }
+        public async Task<List<T>> ListAsync<T>(ISpecification<T> spec) where T : BaseEntity
+        {
+            var specificationResult = ApplySpecification(spec);
+            return await specificationResult.ToListAsync();
         }
 
         public async Task<T> AddAsync<T>(T entity) where T : BaseEntity

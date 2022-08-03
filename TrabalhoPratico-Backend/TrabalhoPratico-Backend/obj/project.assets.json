@@ -73,7 +73,7 @@
           "lib/netstandard2.0/Ardalis.Result.dll": {}
         }
       },
-      "Ardalis.Specification/6.0.1": {
+      "Ardalis.Specification/5.2.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Ardalis.Specification.dll": {}
@@ -82,12 +82,12 @@
           "lib/netstandard2.0/Ardalis.Specification.dll": {}
         }
       },
-      "Ardalis.Specification.EntityFrameworkCore/6.0.1": {
+      "Ardalis.Specification.EntityFrameworkCore/5.2.0": {
         "type": "package",
         "dependencies": {
-          "Ardalis.Specification": "6.0.1",
-          "Microsoft.EntityFrameworkCore": "5.0.13",
-          "Microsoft.EntityFrameworkCore.Relational": "5.0.13"
+          "Ardalis.Specification": "5.2.0",
+          "Microsoft.EntityFrameworkCore": "5.0.9",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.9"
         },
         "compile": {
           "lib/netstandard2.1/Ardalis.Specification.EntityFrameworkCore.dll": {}
@@ -4187,40 +4187,34 @@
         "lib/netstandard2.0/Ardalis.Result.dll"
       ]
     },
-    "Ardalis.Specification/6.0.1": {
-      "sha512": "eLtJq5eI1wXDxPZQY3DW4lKFYgGuBobe9Z60L0uYjEnKQ3t2ACVvnD+qXaL4wfJ9r8aAAv6TAj640RwPZK5BEw==",
+    "Ardalis.Specification/5.2.0": {
+      "sha512": "LYvbL3vln7wu1QzSkogEtjBgrJD+AUJDYsyPFtFHmvRYxb0f8JwGOXarlG8B+TUZKf0dgoWr+bB0fmEkKKEbBQ==",
       "type": "package",
-      "path": "ardalis.specification/6.0.1",
+      "path": "ardalis.specification/5.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ardalis.specification.6.0.1.nupkg.sha512",
+        "ardalis.specification.5.2.0.nupkg.sha512",
         "ardalis.specification.nuspec",
         "icon.png",
         "lib/netstandard2.0/Ardalis.Specification.dll",
-        "lib/netstandard2.0/Ardalis.Specification.pdb",
-        "lib/netstandard2.0/Ardalis.Specification.xml"
+        "lib/netstandard2.0/Ardalis.Specification.pdb"
       ]
     },
-    "Ardalis.Specification.EntityFrameworkCore/6.0.1": {
-      "sha512": "JaY80+zjTDLw04GR51uFAEy/7XjVTrRH/djb/frJwhk/f7iWiurh10hMa15NnCojD89HlZNZOWi9WI77mVD5/g==",
+    "Ardalis.Specification.EntityFrameworkCore/5.2.0": {
+      "sha512": "Ud0JZrcFisjmibFcufWtNnxTJNkU4dqL7ZVKx1AvZaW1dZJT98U0h7baazetQhlAbaS7NSiLHvHnMoCoAaj+jw==",
       "type": "package",
-      "path": "ardalis.specification.entityframeworkcore/6.0.1",
+      "path": "ardalis.specification.entityframeworkcore/5.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ardalis.specification.entityframeworkcore.6.0.1.nupkg.sha512",
+        "ardalis.specification.entityframeworkcore.5.2.0.nupkg.sha512",
         "ardalis.specification.entityframeworkcore.nuspec",
         "icon.png",
-        "lib/net6.0/Ardalis.Specification.EntityFrameworkCore.dll",
-        "lib/net6.0/Ardalis.Specification.EntityFrameworkCore.pdb",
-        "lib/net6.0/Ardalis.Specification.EntityFrameworkCore.xml",
         "lib/netstandard2.0/Ardalis.Specification.EntityFrameworkCore.dll",
         "lib/netstandard2.0/Ardalis.Specification.EntityFrameworkCore.pdb",
-        "lib/netstandard2.0/Ardalis.Specification.EntityFrameworkCore.xml",
         "lib/netstandard2.1/Ardalis.Specification.EntityFrameworkCore.dll",
-        "lib/netstandard2.1/Ardalis.Specification.EntityFrameworkCore.pdb",
-        "lib/netstandard2.1/Ardalis.Specification.EntityFrameworkCore.xml"
+        "lib/netstandard2.1/Ardalis.Specification.EntityFrameworkCore.pdb"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -12232,8 +12226,8 @@
       "Ardalis.HttpClientTestExtensions >= 1.0.0",
       "Ardalis.ListStartupServices >= 1.1.3",
       "Ardalis.Result >= 3.1.2",
-      "Ardalis.Specification >= 6.0.1",
-      "Ardalis.Specification.EntityFrameworkCore >= 6.0.1",
+      "Ardalis.Specification >= 5.2.0",
+      "Ardalis.Specification.EntityFrameworkCore >= 5.2.0",
       "Microsoft.EntityFrameworkCore >= 5.0.16",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.16",
@@ -12313,11 +12307,11 @@
           },
           "Ardalis.Specification": {
             "target": "Package",
-            "version": "[6.0.1, )"
+            "version": "[5.2.0, )"
           },
           "Ardalis.Specification.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[6.0.1, )"
+            "version": "[5.2.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",

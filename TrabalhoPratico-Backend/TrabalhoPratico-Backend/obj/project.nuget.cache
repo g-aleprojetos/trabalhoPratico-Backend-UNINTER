@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KrR+/uAGr1PrkE01irE2ix+j5oc0Xg+i+8ToKdf+zHAJi4GuSbosGY6EbiZ5dW1eV5CLgg9yV24juqtuSbutnQ==",
+  "dgSpecHash": "gpflZdYRk1BItL3Ec9Wh1yG7DAEcJre0VMRnr7AyiDBd1+0vWhtWmgkMHmFv4LTzvt4283u5CtjLipCQyieW9A==",
   "success": true,
   "projectFilePath": "C:\\Users\\asg20\\Desktop\\trabalhoPratico-Backend-UNINTER\\TrabalhoPratico-Backend\\TrabalhoPratico-Backend\\TrabalhoPratico-Backend.csproj",
   "expectedPackageFiles": [
@@ -10,8 +10,8 @@
     "C:\\Users\\asg20\\.nuget\\packages\\ardalis.httpclienttestextensions\\1.0.0\\ardalis.httpclienttestextensions.1.0.0.nupkg.sha512",
     "C:\\Users\\asg20\\.nuget\\packages\\ardalis.liststartupservices\\1.1.3\\ardalis.liststartupservices.1.1.3.nupkg.sha512",
     "C:\\Users\\asg20\\.nuget\\packages\\ardalis.result\\3.1.2\\ardalis.result.3.1.2.nupkg.sha512",
-    "C:\\Users\\asg20\\.nuget\\packages\\ardalis.specification\\6.0.1\\ardalis.specification.6.0.1.nupkg.sha512",
-    "C:\\Users\\asg20\\.nuget\\packages\\ardalis.specification.entityframeworkcore\\6.0.1\\ardalis.specification.entityframeworkcore.6.0.1.nupkg.sha512",
+    "C:\\Users\\asg20\\.nuget\\packages\\ardalis.specification\\5.2.0\\ardalis.specification.5.2.0.nupkg.sha512",
+    "C:\\Users\\asg20\\.nuget\\packages\\ardalis.specification.entityframeworkcore\\5.2.0\\ardalis.specification.entityframeworkcore.5.2.0.nupkg.sha512",
     "C:\\Users\\asg20\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\asg20\\.nuget\\packages\\jetbrains.annotations\\2021.3.0\\jetbrains.annotations.2021.3.0.nupkg.sha512",
     "C:\\Users\\asg20\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",

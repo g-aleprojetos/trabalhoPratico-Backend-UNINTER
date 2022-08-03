@@ -109,7 +109,7 @@ namespace Controllers.ControllerAuthor
             {
                 var author = await _repository.GetByIdAsync<Author>(request.AuthorId);
                 if (author == null || author.Deletada == true) return NotFound($"Não foi encontrado o autor do id= {request.AuthorId}");
-
+                
                 author.UpdateAuthor(request);
                 await _repository.UpdateAsync(author);
                 return Ok(AuthorResponse.Response(author));
