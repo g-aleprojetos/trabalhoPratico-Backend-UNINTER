@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using TrabalhoPratico_Backend;
-using TrabalhoPratico_Backend.v1.Controllers.Author;
+using TrabalhoPratico_Backend.v1.Schemas.Request;
 
 namespace Entities
 {

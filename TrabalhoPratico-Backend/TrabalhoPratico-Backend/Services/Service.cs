@@ -1,6 +1,7 @@
 ﻿using Ardalis.Specification;
 using Ardalis.Specification.EntityFrameworkCore;
 using Context;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -35,9 +36,9 @@ namespace Services
             return _context.Set<T>().SingleOrDefaultAsync(e => e.Id == id);
         }
 
-        public Task<T> GetByNameAsync<T>(string name) where T : BaseEntity
+        public Task<T> GetByLoginAsync<T>(string login) where T : User
         {
-            return _context.Set<T>().SingleOrDefaultAsync(e => e.Name == name);
+            return _context.Set<T>().SingleOrDefaultAsync(e => e.Login == login && e.Deletada == false);
         }
 
         public Task<List<T>> ListAsync<T>() where T : BaseEntity

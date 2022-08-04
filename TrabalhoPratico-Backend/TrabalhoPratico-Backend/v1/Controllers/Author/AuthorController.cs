@@ -1,13 +1,15 @@
 ﻿using Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Schemas.Response;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TrabalhoPratico_Backend.Services.Interfaces;
-using TrabalhoPratico_Backend.v1.Controllers.Author;
+using TrabalhoPratico_Backend.v1.Schemas.Request;
+using TrabalhoPratico_Backend.v1.Schemas.Specification;
+using static Entities.User;
 
 namespace Controllers.ControllerAuthor
 {
@@ -23,6 +25,7 @@ namespace Controllers.ControllerAuthor
 
         //cadastra um autor
         [HttpPost("/Author/Cadastro")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
             Summary = "Cadastrar Autor",
             Description = "Cadastrar Autor",
@@ -50,6 +53,7 @@ namespace Controllers.ControllerAuthor
 
         //Busca todos os Autores
         [HttpGet("/Author")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "Buscar todos Autores",
             Description = "Buscar Autores",
@@ -73,6 +77,7 @@ namespace Controllers.ControllerAuthor
 
         //Busca somente um Autor
         [HttpGet("/Author/{id:Guid}")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "Buscar um único Autor",
             Description = "Buscar um único Autor",
@@ -93,9 +98,34 @@ namespace Controllers.ControllerAuthor
             }
         }
 
+        //Busca Autor com Livro
+        [HttpGet("/AuthorWithBook/{id:Guid}")]
+        [Authorize]
+        [SwaggerOperation(
+            Summary = "Buscar Autor com Livros",
+            Description = "Buscar Autor com livros",
+            OperationId = "AutorWithBook.BuscarAutorComLivro",
+            Tags = new[] { "AuthorEndpoints" })
+        ]
+        public async Task<ActionResult> HandleGetAuthorWithBook(Guid id)
+        {
+            try
+            {
+                var authorsSpec = new AuthorsEspecification(id);
+                var authorList = await _repository.ListAsync(authorsSpec);
+                var author = authorList.FirstOrDefault();
+                if (author == null || author.Deletada == true) return NotFound($"Não foi encontrado o autor do id= {id}");
+                return Ok(ResponseAuthorWithBooks.ResponseAuthorWithBook(author));
+            }
+            catch
+            {
+                return BadRequest("Request inválido");
+            }
+        }
 
         //atualizar usuario
         [HttpPut("/Author")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
             Summary = "Atualiza Autor",
             Description = "Atualiza Autor",
@@ -109,7 +139,7 @@ namespace Controllers.ControllerAuthor
             {
                 var author = await _repository.GetByIdAsync<Author>(request.AuthorId);
                 if (author == null || author.Deletada == true) return NotFound($"Não foi encontrado o autor do id= {request.AuthorId}");
-                
+
                 author.UpdateAuthor(request);
                 await _repository.UpdateAsync(author);
                 return Ok(AuthorResponse.Response(author));
@@ -122,6 +152,7 @@ namespace Controllers.ControllerAuthor
 
         //deleta um autor
         [HttpDelete("/Author/{id:Guid}")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
             Summary = "Deleta Autor",
             Description = "Deleta Autor",

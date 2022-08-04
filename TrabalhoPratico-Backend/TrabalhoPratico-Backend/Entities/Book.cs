@@ -11,9 +11,9 @@ namespace Entities
     {
         public string Publisher { get; set; }
         public string Language { get; set; }
-        public Nullable<int> Pages { get; set; }
-        public Nullable<int> Edition { get; set; }
-        public Nullable<int> Publication { get; set; }
+        public int? Pages { get; set; }
+        public int? Edition { get; set; }
+        public int? Publication { get; set; }
         public string Description { get; set; }
         public ICollection<User> Users { get; set; }
         public IEnumerable<Author> Authors { get; set; }
@@ -52,7 +52,7 @@ namespace Entities
             if(edition != null) Edition = edition;
             if(publication != null) Publication = publication;
             if (description != null) Description = description;
-            if (authors.Count() != 0) Authors = authors;
+            if (authors.Count != 0) Authors = authors;
         }
     }
 }

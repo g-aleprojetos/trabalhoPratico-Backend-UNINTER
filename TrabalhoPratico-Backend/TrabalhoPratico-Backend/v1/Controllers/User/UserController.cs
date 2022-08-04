@@ -1,19 +1,20 @@
 ﻿using Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Schemas.Response;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TrabalhoPratico_Backend.Criptografia;
 using TrabalhoPratico_Backend.Services.Interfaces;
-using TrabalhoPratico_Backend.v1.Controllers.User;
+using TrabalhoPratico_Backend.v1.Schemas.Request;
 
 namespace Controllers.ControllerAuthor
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private IRepository _repository;
@@ -39,7 +40,7 @@ namespace Controllers.ControllerAuthor
                 if (user.Where(y => y.Login == request.Login && y.Deletada == false).Any()) return BadRequest("Usuário já é cadatrado");
 
                 var encryptedPassword = new Cryptography();
-                var newUser = new User(request.Name, request.Login, encryptedPassword.Encrypt(request.Password), request.Course);
+                var newUser = new User(request.Name, request.Login, encryptedPassword.Encrypt(request.Password), request.Course, request.Role);
                 var createdUser = await _repository.AddAsync(newUser);
                 return CreatedAtAction(nameof(HandleGetUser), new { createdUser.Id }, UserResponse.Response(createdUser));
             }
