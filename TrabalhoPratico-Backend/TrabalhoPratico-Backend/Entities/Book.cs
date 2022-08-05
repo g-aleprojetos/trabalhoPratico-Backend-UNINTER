@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TrabalhoPratico_Backend;
 
 namespace Entities
@@ -13,10 +12,13 @@ namespace Entities
         public int? Publication { get; set; }
         public string Description { get; set; }
         public ICollection<User> Users { get; set; }
-        public IEnumerable<Author> Authors { get; set; }
 
+        private List<Author> _authors = new List<Author>();
+        public IEnumerable<Author> Authors => _authors;
 
-        public Book(string name, string publisher, string language, int pages, int edition, int publication, string description, ICollection<Author> authors)
+        public Book() { }
+
+        public Book(string name, string publisher, string language, int pages, int edition, int publication, string description, List<Author> authors)
         {
             Name = name;
             Publisher = publisher;
@@ -25,23 +27,10 @@ namespace Entities
             Edition = edition;
             Publication = publication;
             Description = description;
-            Authors = authors;
+            _authors = authors;
         }
 
-        //public Book(Guid id, string name, string publisher, string language, int pages, int edition, int publication, string description, ICollection<Author> authors)
-        //{
-        //    Id = id;
-        //    Name = name;
-        //    Publisher = publisher;
-        //    Language = language;
-        //    Pages = pages;
-        //    Edition = edition;
-        //    Publication = publication;
-        //    Description = description;
-        //    Authors = authors;
-        //}
-
-        public void UpdateBook(string name, string publisher, string language, int? pages, int? edition, int? publication, string description, ICollection<Author> authors)
+        public void UpdateBook(string name, string publisher, string language, int? pages, int? edition, int? publication, string description, List<Author> authors)
         {
             if (name != null) Name = name;
             if (publisher != null) Publisher = publisher;
@@ -50,7 +39,7 @@ namespace Entities
             if (edition != null) Edition = edition;
             if (publication != null) Publication = publication;
             if (description != null) Description = description;
-            if (authors.Count != 0) Authors = authors;
+            if (authors.Count != 0) _authors = authors;
         }
     }
 }

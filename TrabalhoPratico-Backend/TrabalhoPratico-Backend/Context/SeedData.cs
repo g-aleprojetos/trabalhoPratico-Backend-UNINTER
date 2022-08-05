@@ -36,7 +36,7 @@ namespace TrabalhoPratico_Backend.Context
             {
                 PopulateTestDataBooks();
             }
-
+            dbContext.SaveChanges();
         }
 
         private void PopulateTestDataUsers()
@@ -50,7 +50,7 @@ namespace TrabalhoPratico_Backend.Context
             }
             dbContext.Users.AddRange(userAdm, userAluno);
          
-            dbContext.SaveChanges();
+            
         }
         private void PopulateTestDataAuthors()
         {
@@ -66,7 +66,7 @@ namespace TrabalhoPratico_Backend.Context
             
             dbContext.Authors.AddRange(author1, author2, author3, author4);
      
-            dbContext.SaveChanges();
+            
         }
 
         private void PopulateTestDataBooks()
@@ -89,7 +89,13 @@ namespace TrabalhoPratico_Backend.Context
             }
             dbContext.Books.AddRange(book1, book2, book3);
 
-            dbContext.SaveChanges();
-        }
+           
+
+
+        
+
+
+
+    }
     }
 }
