@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TrabalhoPratico_Backend;
 
 namespace Entities
@@ -14,7 +15,6 @@ namespace Entities
         public ICollection<User> Users { get; set; }
         public IEnumerable<Author> Authors { get; set; }
 
-        public Book() { }
 
         public Book(string name, string publisher, string language, int pages, int edition, int publication, string description, ICollection<Author> authors)
         {
@@ -27,6 +27,19 @@ namespace Entities
             Description = description;
             Authors = authors;
         }
+
+        //public Book(Guid id, string name, string publisher, string language, int pages, int edition, int publication, string description, ICollection<Author> authors)
+        //{
+        //    Id = id;
+        //    Name = name;
+        //    Publisher = publisher;
+        //    Language = language;
+        //    Pages = pages;
+        //    Edition = edition;
+        //    Publication = publication;
+        //    Description = description;
+        //    Authors = authors;
+        //}
 
         public void UpdateBook(string name, string publisher, string language, int? pages, int? edition, int? publication, string description, ICollection<Author> authors)
         {
