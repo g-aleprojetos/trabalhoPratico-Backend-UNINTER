@@ -20,18 +20,9 @@ namespace Entities
         {
             Name = name;
             Login = login;
-            Password = password;
+            Password = Encrypting(password);
             Course = course;
             Role = role;
-        }
-
-        public User(string name, string login, string password, string course, Book books)
-        {
-            Name = name;
-            Login = login;
-            Password = password;
-            Course = course;
-            Books = (ICollection<Book>)books;
         }
 
         public void UpdateUserBook(ICollection<Book> book)

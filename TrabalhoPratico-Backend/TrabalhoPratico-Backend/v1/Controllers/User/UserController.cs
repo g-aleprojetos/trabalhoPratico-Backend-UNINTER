@@ -40,8 +40,7 @@ namespace Controllers.ControllerAuthor
                 var user = await _repository.ListAsync<User>();
                 if (user.Where(y => y.Login == request.Login && y.Deletada == false).Any()) return BadRequest("Usuário já é cadatrado");
 
-                var encryptedPassword = new Cryptography();
-                var newUser = new User(request.Name, request.Login, encryptedPassword.Encrypt(request.Password), request.Course, request.Role);
+                var newUser = new User(request.Name, request.Login, request.Password, request.Course, request.Role);
                 var createdUser = await _repository.AddAsync(newUser);
                 return CreatedAtAction(nameof(HandleGetUser), new { createdUser.Id }, UserResponse.Response(createdUser));
             }

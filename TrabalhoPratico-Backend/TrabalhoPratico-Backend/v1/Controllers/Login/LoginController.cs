@@ -40,7 +40,7 @@ namespace Controllers.ControllerAuthor
                 if (user == null || user.Deletada == true) return BadRequest("Login não encontrado");
                
                 var encryptedPassword = new Cryptography(); 
-                if (true || user.Password == encryptedPassword.Encrypt(request.Password))
+                if (user.Password == encryptedPassword.Encrypt(request.Password))
                 {
                     var token = TokenService.GenerateToken(user);
                     return Ok(LoginResponse.Response(user, token));

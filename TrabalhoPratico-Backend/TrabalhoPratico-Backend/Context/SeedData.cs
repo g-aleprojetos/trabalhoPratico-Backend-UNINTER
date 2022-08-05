@@ -1,10 +1,8 @@
 ﻿using Context;
 using Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using TrabalhoPratico_Backend.Services.Interfaces;
 using static Entities.User;
 
 namespace TrabalhoPratico_Backend.Context
@@ -18,7 +16,6 @@ namespace TrabalhoPratico_Backend.Context
         protected readonly ApiContext dbContext;
 
         public SeedData(ApiContext _dbContext) => dbContext = _dbContext;
-   
 
         public void AplicarSeed()
         {
@@ -49,8 +46,8 @@ namespace TrabalhoPratico_Backend.Context
                 dbContext.Remove(item);
             }
             dbContext.Users.AddRange(userAdm, userAluno);
-         
-            
+
+
         }
         private void PopulateTestDataAuthors()
         {
@@ -63,10 +60,10 @@ namespace TrabalhoPratico_Backend.Context
             {
                 dbContext.Remove(item);
             }
-            
+
             dbContext.Authors.AddRange(author1, author2, author3, author4);
-     
-            
+
+
         }
 
         private void PopulateTestDataBooks()
@@ -89,13 +86,14 @@ namespace TrabalhoPratico_Backend.Context
             }
             dbContext.Books.AddRange(book1, book2, book3);
 
-           
-
-
-        
+            
 
 
 
-    }
+
+
+
+
+        }
     }
 }
