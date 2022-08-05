@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using TrabalhoPratico_Backend.Services.Interfaces;
 using TrabalhoPratico_Backend.v1.Schemas.Request;
 using TrabalhoPratico_Backend.v1.Schemas.Specification;
-using static Entities.User;
 
 namespace Controllers.ControllerAuthor
 {
@@ -53,7 +52,7 @@ namespace Controllers.ControllerAuthor
 
         //Busca todos os Autores
         [HttpGet("/Author")]
-        [Authorize]
+        [Authorize(Roles = "ADM,USER")]
         [SwaggerOperation(
             Summary = "Buscar todos Autores",
             Description = "Buscar Autores",
@@ -77,7 +76,7 @@ namespace Controllers.ControllerAuthor
 
         //Busca somente um Autor
         [HttpGet("/Author/{id:Guid}")]
-        [Authorize]
+        [Authorize(Roles = "ADM,USER")]
         [SwaggerOperation(
             Summary = "Buscar um único Autor",
             Description = "Buscar um único Autor",
@@ -100,7 +99,7 @@ namespace Controllers.ControllerAuthor
 
         //Busca Autor com Livro
         [HttpGet("/AuthorWithBook/{id:Guid}")]
-        [Authorize]
+        [Authorize(Roles = "ADM,USER")]
         [SwaggerOperation(
             Summary = "Buscar Autor com Livros",
             Description = "Buscar Autor com livros",
@@ -133,7 +132,7 @@ namespace Controllers.ControllerAuthor
             Tags = new[] { "AuthorEndpoints" })
         ]
 
-        public async Task<ActionResult> HandlePutAuthor(AuthorRequestPut request)
+        public async Task<ActionResult> HandlePutAuthor(AuthorRequest request)
         {
             try
             {

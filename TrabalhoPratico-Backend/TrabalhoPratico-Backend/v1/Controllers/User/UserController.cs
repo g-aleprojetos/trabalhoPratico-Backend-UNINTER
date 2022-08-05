@@ -25,6 +25,7 @@ namespace Controllers.ControllerAuthor
 
         //Cadastra usuario
         [HttpPost("/User/Cadastro")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
          Summary = "Criar Usuário",
          Description = "Criar Usuário",
@@ -52,6 +53,7 @@ namespace Controllers.ControllerAuthor
 
         //Buscar todos usuarios
         [HttpGet("/User")]
+        [Authorize(Roles = "ADM, USER")]
         [SwaggerOperation(
             Summary = "Buscar todos usuários",
             Description = "Buscar Usuario",
@@ -74,6 +76,7 @@ namespace Controllers.ControllerAuthor
 
         //Buscar um único usuário
         [HttpGet("/User/{id:Guid}")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
          Summary = "Buscar um único Usuario",
          Description = "Buscar um único Usuario",
@@ -97,6 +100,7 @@ namespace Controllers.ControllerAuthor
 
         //atualizar usuario
         [HttpPut("/User")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
          Summary = "Atualiza Usuario",
          Description = "Atualiza Usuario",
@@ -123,6 +127,7 @@ namespace Controllers.ControllerAuthor
 
         //Deleta um único usuário
         [HttpDelete("/User/{id:Guid}")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
          Summary = "Delete Usuario",
          Description = "Delete Usuario",

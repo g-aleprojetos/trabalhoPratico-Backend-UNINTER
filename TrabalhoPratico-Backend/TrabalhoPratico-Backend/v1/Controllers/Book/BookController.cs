@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Schemas.Response;
 using Swashbuckle.AspNetCore.Annotations;
@@ -24,6 +25,7 @@ namespace Controllers.ControllerAuthor
 
         //Cadastra livro
         [HttpPost("/Book/Cadastro")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
          Summary = "Criar Livro",
          Description = "Criar Livro",
@@ -77,6 +79,7 @@ namespace Controllers.ControllerAuthor
 
         //Busca todos os livros
         [HttpGet("/Book")]
+        [Authorize(Roles = "ADM, USER")]
         [SwaggerOperation(
             Summary = "Buscar todos Livros",
             Description = "Buscar Livros",
@@ -104,6 +107,7 @@ namespace Controllers.ControllerAuthor
 
         //Busca um livro
         [HttpGet("/Book/{id:Guid}")]
+        [Authorize(Roles = "ADM, USER")]
         [SwaggerOperation(
             Summary = "Buscar um único Livro",
             Description = "Buscar um único Livro",
@@ -130,6 +134,7 @@ namespace Controllers.ControllerAuthor
 
         //atualizar Livro
         [HttpPut("/Book")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
            Summary = "Atualizar Livro",
            Description = "Atualizar Livro",
@@ -189,6 +194,7 @@ namespace Controllers.ControllerAuthor
 
         //deleta um livro
         [HttpDelete("/Book/{id:Guid}")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
             Summary = "Deleta Livro",
             Description = "Deleta Livro",

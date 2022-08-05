@@ -14,7 +14,7 @@ namespace Entities
             Name = name;
         }
 
-        public void UpdateAuthor(AuthorRequestPut authorRequestPut)
+        public void UpdateAuthor(AuthorRequest authorRequestPut)
         {
             if (authorRequestPut.Name != null) Name = authorRequestPut.Name;
         }

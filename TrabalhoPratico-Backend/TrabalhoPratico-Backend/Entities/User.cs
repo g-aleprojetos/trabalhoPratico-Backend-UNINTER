@@ -34,6 +34,11 @@ namespace Entities
             Books = (ICollection<Book>)books;
         }
 
+        public void UpdateUserBook(ICollection<Book> book)
+        {
+            Books = book;
+        }
+
 
         public void UpdateUser(UserRequestPut userRequestPut)
         {
@@ -41,7 +46,7 @@ namespace Entities
             if (userRequestPut.Login != null) Login = userRequestPut.Login;
             if (userRequestPut.Password != null) Password = Encrypting(userRequestPut.Password);
             if (userRequestPut.Course != null) Course = userRequestPut.Course;
-            Role = userRequestPut.Role;
+            if ( userRequestPut.Role != AccessType.NULL)Role = userRequestPut.Role;
         }
 
         public string Encrypting(string valor)
