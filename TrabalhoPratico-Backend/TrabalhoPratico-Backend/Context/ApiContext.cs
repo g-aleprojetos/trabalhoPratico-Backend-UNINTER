@@ -1,6 +1,7 @@
 ﻿using Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
+using static Entities.User;
 
 namespace Context
 {
@@ -19,8 +20,8 @@ namespace Context
             modelBuilder.Entity<User>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             modelBuilder.Entity<User>()
                   .HasData(
-                    new User() { Id = Guid.NewGuid(), Name = "Alexandre", Login = "Gonçalves", Password = "3413992", Course = "Tecnologia em Desenvolvimento de aplicativos Móveis" },
-                    new User() { Id = Guid.NewGuid(), Name = "Administrador", Login = "adm", Password = "adm", Course = "Usuario Adminitrativo" });
+                    new User() { Id = Guid.NewGuid(), Name = "Alexandre", Login = "Gonçalves", Password = "3413992", Course = "Tecnologia em Desenvolvimento de aplicativos Móveis", Role = AccessType.USER },
+                    new User() { Id = Guid.NewGuid(), Name = "Administrador", Login = "adm", Password = "adm", Course = "Usuario Adminitrativo", Role = AccessType.ADM });
             
             modelBuilder.Entity<Book>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             modelBuilder.Entity<Book>()
@@ -35,7 +36,7 @@ namespace Context
                      new Author() { Id = Guid.NewGuid(), Name = "Luis Joyanes Aguilar" },
                      new Author() { Id = Guid.NewGuid(), Name = "Simon Monk"},
                      new Author() { Id = Guid.NewGuid(), Name = "Cláudio Luís Vieira Oliveira" },
-                     new Author() { Id = Guid.NewGuid(), Name = "Humberto Augusto Piovesana Zanetti" });
+                     new Author() { Id = Guid.NewGuid(), Name = "Humberto Augusto Piovesana Zanetti" });            
         }
     }
 }

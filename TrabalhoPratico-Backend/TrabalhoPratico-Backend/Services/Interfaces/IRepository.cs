@@ -1,17 +1,24 @@
-﻿using System;
+﻿using Ardalis.Specification;
+using Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TrabalhoPratico_Backend;
 
-namespace Services.Interfaces
+namespace TrabalhoPratico_Backend.Services.Interfaces
 {
     public interface IRepository
     {
+        void Add<T>(T entity) where T : BaseEntity;
         Task<T> GetByIdAsync<T>(Guid id) where T : BaseEntity;
+        Task<T> GetByLoginAsync<T>(string login) where T : User;
         Task<List<T>> ListAsync<T>() where T : BaseEntity;
+        Task<List<T>> ListAsync<T>(ISpecification<T> spec) where T : BaseEntity;
         Task<T> AddAsync<T>(T entity) where T : BaseEntity;
         Task UpdateAsync<T>(T entity) where T : BaseEntity;
         Task DeleteAsync<T>(T entity) where T : BaseEntity;
         Task DeleteLogicAsync<T>(T entity) where T : BaseEntity;
+
+
+        
     }
 }
