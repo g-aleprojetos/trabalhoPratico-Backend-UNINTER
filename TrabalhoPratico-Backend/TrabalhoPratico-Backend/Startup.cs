@@ -9,8 +9,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using TrabalhoPratico_Backend.Config;
 using TrabalhoPratico_Backend.Services.Interfaces;
 
 namespace TrabalhoPratico_Backend
@@ -95,6 +97,7 @@ namespace TrabalhoPratico_Backend
         {
             if (env.IsDevelopment())
             {
+                app.AplicarSeed();
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TrabalhoPratico_Backend v1"));
