@@ -52,9 +52,9 @@ namespace Context
             List<Author> autores2 = new() { author3 };
             List<Author> autores3 = new() { author4 };
 
-            modelBuilder.Entity<Author>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
-            modelBuilder.Entity<Author>()
-                   .HasData(author1, author2,author3, author4 );
+            //modelBuilder.Entity<Author>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
+            //modelBuilder.Entity<Author>()
+            //       .HasData(author1, author2,author3, author4 );
 
             //modelBuilder.Entity<Book>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             //modelBuilder.Entity<Book>()
