@@ -79,7 +79,7 @@ namespace Controllers.ControllerAuthor
 
         //Busca todos os livros
         [HttpGet("/Book")]
-        [Authorize(Roles = "ADM, USER")]
+        [Authorize(Roles = "ADM,USER")]
         [SwaggerOperation(
             Summary = "Buscar todos Livros",
             Description = "Buscar Livros",
@@ -107,7 +107,7 @@ namespace Controllers.ControllerAuthor
 
         //Busca um livro
         [HttpGet("/Book/{id:Guid}")]
-        [Authorize(Roles = "ADM, USER")]
+        [Authorize(Roles = "ADM,USER")]
         [SwaggerOperation(
             Summary = "Buscar um único Livro",
             Description = "Buscar um único Livro",

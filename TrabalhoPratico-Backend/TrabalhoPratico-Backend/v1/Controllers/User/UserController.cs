@@ -6,7 +6,6 @@ using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using TrabalhoPratico_Backend.Criptografia;
 using TrabalhoPratico_Backend.Services.Interfaces;
 using TrabalhoPratico_Backend.v1.Schemas.Request;
 
@@ -52,7 +51,7 @@ namespace Controllers.ControllerAuthor
 
         //Buscar todos usuarios
         [HttpGet("/User")]
-        [Authorize(Roles = "ADM, USER")]
+        [Authorize(Roles = "ADM")]
         [SwaggerOperation(
             Summary = "Buscar todos usuários",
             Description = "Buscar Usuario",
@@ -75,7 +74,7 @@ namespace Controllers.ControllerAuthor
 
         //Buscar um único usuário
         [HttpGet("/User/{id:Guid}")]
-        [Authorize(Roles = "ADM")]
+        [Authorize(Roles = "ADM,USER")]
         [SwaggerOperation(
          Summary = "Buscar um único Usuario",
          Description = "Buscar um único Usuario",
