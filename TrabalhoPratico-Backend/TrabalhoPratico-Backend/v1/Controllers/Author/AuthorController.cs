@@ -32,15 +32,19 @@ namespace Controllers.ControllerAuthor
             Tags = new[] { "AuthorEndpoints" })
         ]
 
-        public async Task<ActionResult> HandlePostUser(AuthorRequestPost request)
+        public async Task<ActionResult> HandlePostAuthor(AuthorRequestPost request)
         {
             try
             {
+                //Busca todos os autores do banco de dados
                 var authors = await _repository.ListAsync<Author>();
+                //verifica se o autor passado pela requisição já está cadastrado e ativo no banco.
                 if (authors.Where(y => y.Name == request.Name && y.Deletada == false).Any()) return BadRequest("Autor já é cadatrado");
-
+                //Cria um novo autor
                 var newAuthor = new Author(request.Name);
+                //cadastra o autor novo no anco de dados
                 var createdAuthor = await _repository.AddAsync(newAuthor);
+                //retorna o autor cadastrado
                 return CreatedAtAction(nameof(HandleGetAuthor), new { createdAuthor.Id }, AuthorResponse.Response(createdAuthor));
             }
             catch
@@ -63,8 +67,13 @@ namespace Controllers.ControllerAuthor
         {
             try
             {
+                //Busca todos os autores do banco de dados
                 var authors = await _repository.ListAsync<Author>();
+                //Seleciona somente os autores ativos
                 authors = authors.Where(x => x.Deletada != true).ToList();
+                //retorna não encontrado se caso os autores vierem nulo
+                if (authors == null) return NotFound();
+                //retorna a lista de autores
                 return Ok(new AuthorsResponse(authors));
             }
             catch
@@ -87,8 +96,11 @@ namespace Controllers.ControllerAuthor
         {
             try
             {
+                //Busca o autor no banco de dados
                 var author = await _repository.GetByIdAsync<Author>(id);
+                //Verifica se o autor passado é nulo ou se esta ativo
                 if (author == null || author.Deletada == true) return NotFound($"Não foi encontrado o autor do id= {id}");
+                //retorna o autor
                 return Ok(AuthorResponse.Response(author));
             }
             catch
@@ -110,10 +122,15 @@ namespace Controllers.ControllerAuthor
         {
             try
             {
+                //monta a query com specification para buscar o autor com o livro
                 var authorsSpec = new AuthorsEspecification(id);
+                //Busca o autor no banco de dados com os livros nele cadastrado
                 var authorList = await _repository.ListAsync(authorsSpec);
+                //Separa em apenas um objeto
                 var author = authorList.FirstOrDefault();
+                //verifica se existe um autor ou se está deletado
                 if (author == null || author.Deletada == true) return NotFound($"Não foi encontrado o autor do id= {id}");
+                //retorna o autor com os livros registrados
                 return Ok(ResponseAuthorWithBooks.ResponseAuthorWithBook(author));
             }
             catch
@@ -136,11 +153,15 @@ namespace Controllers.ControllerAuthor
         {
             try
             {
+                //Busca o autor no banco de dados
                 var author = await _repository.GetByIdAsync<Author>(request.AuthorId);
+                //Verifica se o autor é nulo ou se está deletado
                 if (author == null || author.Deletada == true) return NotFound($"Não foi encontrado o autor do id= {request.AuthorId}");
-
+                //atualiza o autor
                 author.UpdateAuthor(request);
+                //cadastra o autor no banco de dados
                 await _repository.UpdateAsync(author);
+                //retorna o autor cadastrado
                 return Ok(AuthorResponse.Response(author));
             }
             catch
@@ -162,9 +183,13 @@ namespace Controllers.ControllerAuthor
         {
             try
             {
+                //Busca o autor no banco de dados
                 var author = await _repository.GetByIdAsync<Author>(id);
+                //Verifica se o autor é nulo ou se está deletado
                 if (author == null || author.Deletada == true) return NotFound($"Não foi encontrado o autor do id= {id}");
+                //Deleta logicamente o autor no banco de dados
                 await _repository.DeleteLogicAsync(author);
+                //retorna o comunicado que o autor foi excluido
                 return Ok($"Autor do id={id} foi excluido com sucesso");
             }
             catch

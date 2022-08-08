@@ -25,7 +25,7 @@ namespace Services
         {
             return SpecificationEvaluator.Default.GetQuery(_context.Set<T>().AsQueryable(), specification: spec);
         }
-
+        //Metodos que faz o mapeamento com o banco de dados para fazer o crud
         public void Add<T>(T entity) where T : BaseEntity
         {
             _context.Add(entity);

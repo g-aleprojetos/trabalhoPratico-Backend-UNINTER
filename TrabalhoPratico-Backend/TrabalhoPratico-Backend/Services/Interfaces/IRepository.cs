@@ -16,9 +16,6 @@ namespace TrabalhoPratico_Backend.Services.Interfaces
         Task<T> AddAsync<T>(T entity) where T : BaseEntity;
         Task UpdateAsync<T>(T entity) where T : BaseEntity;
         Task DeleteAsync<T>(T entity) where T : BaseEntity;
-        Task DeleteLogicAsync<T>(T entity) where T : BaseEntity;
-
-
-        
+        Task DeleteLogicAsync<T>(T entity) where T : BaseEntity;        
     }
 }

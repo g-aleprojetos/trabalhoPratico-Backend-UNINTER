@@ -3,8 +3,10 @@ using TrabalhoPratico_Backend;
 
 namespace Entities
 {
+    //A class Book usa a interface BaseEntity adquirindo Id, Name e Deletada
     public class Book : BaseEntity
     {
+        //Propriedade da entidade
         public string Publisher { get; set; }
         public string Language { get; set; }
         public int? Pages { get; set; }
@@ -17,7 +19,7 @@ namespace Entities
         public IEnumerable<Author> Authors => _authors;
 
         public Book() { }
-
+        //Contrutor para criar um livro
         public Book(string name, string publisher, string language, int pages, int edition, int publication, string description, List<Author> authors)
         {
             Name = name;
@@ -29,7 +31,7 @@ namespace Entities
             Description = description;
             _authors = authors;
         }
-
+        //Método para atualizar um livro
         public void UpdateBook(string name, string publisher, string language, int? pages, int? edition, int? publication, string description, List<Author> authors)
         {
             if (name != null) Name = name;

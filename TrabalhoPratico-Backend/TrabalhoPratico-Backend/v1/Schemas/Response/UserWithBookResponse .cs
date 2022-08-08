@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace Schemas.Response
 {
+    //Cria o modelo de resposta do Usuário com Livro
     public class ResponseUserWithBooks
     {
         public Guid Id { get; set; }
@@ -21,7 +22,7 @@ namespace Schemas.Response
             Books = books.Select(BookResponse.Response).OrderBy(element => element.Name);
         }
     }
-
+    //Retorna lista deusuários com livros
     public class UsersWithBookResponse
     {
         public UsersWithBookResponse(IEnumerable<User> user)

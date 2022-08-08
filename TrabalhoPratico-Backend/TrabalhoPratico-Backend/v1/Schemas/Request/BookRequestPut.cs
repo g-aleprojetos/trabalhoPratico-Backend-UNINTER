@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace TrabalhoPratico_Backend.v1.Schemas.Request
 {
+    //Cria o modelo de requisição do put
     public class BookRequestPut
     {
         public Guid BookId { get; set; }
@@ -21,5 +22,4 @@ namespace TrabalhoPratico_Backend.v1.Schemas.Request
         public string Name { get; set; }
 
     }
-
 }
