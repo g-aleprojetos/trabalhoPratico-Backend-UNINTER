@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace TrabalhoPratico_Backend.v1.Schemas.Request
 {
+    //Cria o modelo de requisição do post
     public class BookRequestPost
     {
         public string Name { get; set; }
@@ -20,5 +20,4 @@ namespace TrabalhoPratico_Backend.v1.Schemas.Request
         public string Name { get; set; }
 
     }
-
 }

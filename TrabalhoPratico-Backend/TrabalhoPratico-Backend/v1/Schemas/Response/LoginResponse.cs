@@ -6,7 +6,7 @@ namespace Schemas.Response
 {
     public class LoginResponse
     {
-
+        //Cria o modelo de resposta do Login
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Login { get; set; }

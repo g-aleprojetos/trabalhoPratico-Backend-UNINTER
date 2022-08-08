@@ -2,6 +2,7 @@
 
 namespace TrabalhoPratico_Backend.v1.Schemas.Request
 {
+    //Cria o modelo de requisição do post
     public class UserRequestPost
     {
         public string Name { get; set; }

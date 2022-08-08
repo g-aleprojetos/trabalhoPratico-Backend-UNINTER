@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Schemas.Response;
 using Services;
 using Swashbuckle.AspNetCore.Annotations;
-using System.Linq;
 using System.Threading.Tasks;
 using TrabalhoPratico_Backend.Criptografia;
 using TrabalhoPratico_Backend.Services.Interfaces;
@@ -36,20 +35,26 @@ namespace Controllers.ControllerAuthor
         {
             try
             {
+                //Busca login e password do usuário no banco de dados
                 var user = await _repository.GetByLoginAsync<User>(request.Login);
+                //verifica se não retorna nulo ou se o login esta tivo 
                 if (user == null || user.Deletada == true) return BadRequest("Login não encontrado");
-               
-                var encryptedPassword = new Cryptography(); 
+                //variavel que vai ser usada para encriptar a senha
+                var encryptedPassword = new Cryptography();
+                //Encripta a senha e verifica se é valida
                 if (user.Password == encryptedPassword.Encrypt(request.Password))
                 {
+                    //cria um token do usuário
                     var token = TokenService.GenerateToken(user);
+                    //retorna o usuario e o token
                     return Ok(LoginResponse.Response(user, token));
                 }
                 else
                 {
+                    //retorna que a senha passada está errada
                     return BadRequest("Senha não confere");
                 }
-             }
+            }
             catch
             {
                 return BadRequest("Request inválido");

@@ -7,6 +7,7 @@ namespace Schemas.Response
 {
     public class BookResponse
     {
+        //Cria o modelo de resposta do livro
         public Guid Id { get; set; }
         public string Name { get; set; }
         public IEnumerable<BookAuthorsResponse>? Authors { get; set; }
@@ -33,7 +34,7 @@ namespace Schemas.Response
             Authors = authors?.Select(BookAuthorsResponse.Response).OrderBy(element => element.Name);
         }
     }
-
+    //Retorna lista de livros
     public class BooksResponse
     {
         public BooksResponse(IEnumerable<Book> book)
@@ -44,7 +45,7 @@ namespace Schemas.Response
         }
         public IEnumerable<BookResponse> Books { get; set; }
     }
-
+    //retorna Livro com autor
     public class BookAuthorsResponse
     {
         public Guid Id { get; set; }

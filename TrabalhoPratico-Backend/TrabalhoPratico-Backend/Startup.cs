@@ -9,7 +9,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Services;
-using System;
 using System.Collections.Generic;
 using System.Text;
 using TrabalhoPratico_Backend.Config;
@@ -31,7 +30,7 @@ namespace TrabalhoPratico_Backend
         {
 
             services.AddControllers();
-
+            //Configuração do Token
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
             services.AddAuthentication(x =>
             {
@@ -50,7 +49,7 @@ namespace TrabalhoPratico_Backend
                     ValidateAudience = false
                 };
             });
-
+            //configuração do contexto para conecção do banco de dados
             services.AddDbContext<ApiContext>(options =>
                                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -58,6 +57,7 @@ namespace TrabalhoPratico_Backend
 
             services.AddSwaggerGen(c =>
             {
+                //configuração da documentação do swagger
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
@@ -70,7 +70,7 @@ namespace TrabalhoPratico_Backend
                     },
                 });
                 c.EnableAnnotations();
-
+                //Configuração do swagger para receber o token
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
@@ -97,7 +97,7 @@ namespace TrabalhoPratico_Backend
         {
             if (env.IsDevelopment())
             {
-                app.AplicarSeed();
+                app.AplicarSeed();//aplica o seedData
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TrabalhoPratico_Backend v1"));
@@ -107,7 +107,7 @@ namespace TrabalhoPratico_Backend
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            app.UseAuthentication();//configuração para receber a autorização
 
             app.UseAuthorization();
 

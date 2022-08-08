@@ -6,6 +6,7 @@ using static Entities.User;
 
 namespace Schemas.Response
 {
+    //Cria o modelo de resposta do Usuário
     public class UserResponse
     {
         public Guid Id { get; set; }
@@ -26,7 +27,7 @@ namespace Schemas.Response
             Role = role.ToString();
         }
     }
-
+    //retorna lista de usuários
     public class UsersResponse
     {
         public UsersResponse(IEnumerable<User> user)

@@ -3,6 +3,7 @@ using static Entities.User;
 
 namespace TrabalhoPratico_Backend.v1.Schemas.Request
 {
+    //Cria o modelo de requisição do put
     public class UserRequestPut
     {
         public Guid UserId { get; set; }
